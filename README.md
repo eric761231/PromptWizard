@@ -25,7 +25,7 @@
 ### 本地運行
 1. 下載或克隆專案到本地
 ```bash
-git clone https://github.com/[你的用戶名]/PromptWizard.git
+git clone https://github.com/eric761231/PromptWizard.git
 cd PromptWizard
 ```
 
