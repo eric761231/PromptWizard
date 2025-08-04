@@ -1,0 +1,42 @@
+{
+  "api_key": "AIzaSyDTp7A9gPOyC2emLR49pBP11tOHlXZvGRI",
+  "model": "gemini-1.5-flash",
+  "type": "gemini_api_config",
+  "base_url": "https://generativelanguage.googleapis.com/v1beta/models",
+  "generationConfig": {
+    "temperature": 0.7,
+    "topK": 40,
+    "topP": 0.95,
+    "maxOutputTokens": 4096,
+    "stopSequences": []
+  },
+  "safetySettings": [
+    {
+      "category": "HARM_CATEGORY_HARASSMENT",
+      "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+    },
+    {
+      "category": "HARM_CATEGORY_HATE_SPEECH",
+      "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+    },
+    {
+      "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+      "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+    },
+    {
+      "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+      "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+    }
+  ],
+  "metadata": {
+    "created_date": "2025-08-04",
+    "description": "PromptWizard Gemini API 預設配置文件",
+    "version": "1.0.0",
+    "usage": {
+      "domains": ["code", "art", "ui"],
+      "languages": ["zh-tw", "zh-cn", "en", "mixed"],
+      "complexity_levels": ["basic", "intermediate", "advanced", "expert"],
+      "styles": ["professional", "creative", "detailed", "concise"]
+    }
+  }
+}

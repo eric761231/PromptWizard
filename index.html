@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="專業的AI提示詞優化工具，針對代碼開發、繪畫創作和UI介面設計領域提供智能優化服務">
+    <meta name="keywords" content="AI提示詞優化,代碼開發,繪畫創作,UI設計,人工智能,專業工具">
+    <meta name="author" content="PromptWizard Team">
+    <title>PromptWizard - 專業AI提示詞優化大師</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">跳至主要內容</a>
+    
+    <header class="header-compact" role="banner">
+        <div class="container">
+            <h1 class="logo-compact">
+                <i class="fas fa-magic" aria-hidden="true"></i>
+                <span class="logo-text">
+                    <span class="logo-title">PromptWizard</span>
+                    <span class="logo-subtitle">專業AI提示詞優化大師</span>
+                </span>
+            </h1>
+            <button class="settings-btn" id="settings-btn" aria-label="設置" title="API設置">
+                <i class="fas fa-cog" aria-hidden="true"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="main-compact" id="main-content" role="main">
+        <div class="container">
+            <section class="workspace-compact" aria-labelledby="workspace-title">
+                <h2 id="workspace-title" class="sr-only">AI提示詞優化工作區</h2>
+                
+                <div class="work-area">
+                    <div class="input-panel" role="region" aria-labelledby="input-section-title">
+                        <h3 id="input-section-title" class="sr-only">輸入區域</h3>
+                        
+                        <div class="input-group-compact">
+                            <label for="original-prompt" class="input-label">輸入您的提示詞</label>
+                            <textarea 
+                                id="original-prompt" 
+                                class="prompt-input"
+                                placeholder="請輸入需要優化的提示詞內容..."
+                                rows="4"
+                                aria-describedby="prompt-help"
+                                required
+                            ></textarea>
+                            <div id="prompt-help" class="sr-only">
+                                請輸入您希望優化的提示詞，系統將根據選擇的領域提供專業的優化建議
+                            </div>
+                        </div>
+
+                        <div class="controls-row">
+                            <fieldset class="options-inline">
+                                <legend class="sr-only">優化設定選項</legend>
+                                
+                                <div class="option-compact">
+                                    <label for="complexity">複雜度</label>
+                                    <div class="custom-select-mini">
+                                        <select id="complexity" aria-describedby="complexity-help">
+                                            <option value="basic">基礎</option>
+                                            <option value="intermediate" selected>中級</option>
+                                            <option value="advanced">高級</option>
+                                            <option value="expert">專家</option>
+                                        </select>
+                                        <div class="select-arrow-mini"></div>
+                                    </div>
+                                    <div id="complexity-help" class="sr-only">選擇技術複雜度等級</div>
+                                </div>
+
+                                <div class="option-compact">
+                                    <label for="target-ai">目標AI</label>
+                                    <div class="custom-select-mini">
+                                        <select id="target-ai" aria-describedby="target-ai-help">
+                                            <option value="gemini" selected>Gemini</option>
+                                            <option value="chatgpt">ChatGPT</option>
+                                            <option value="claude">Claude</option>
+                                        </select>
+                                        <div class="select-arrow-mini"></div>
+                                    </div>
+                                    <div id="target-ai-help" class="sr-only">選擇目標AI模型</div>
+                                </div>
+
+                                <div class="option-compact">
+                                    <label for="style">風格</label>
+                                    <div class="custom-select-mini">
+                                        <select id="style" aria-describedby="style-help">
+                                            <option value="professional" selected>專業</option>
+                                            <option value="creative">創意</option>
+                                            <option value="detailed">詳細</option>
+                                            <option value="concise">簡潔</option>
+                                        </select>
+                                        <div class="select-arrow-mini"></div>
+                                    </div>
+                                    <div id="style-help" class="sr-only">選擇表達風格</div>
+                                </div>
+
+                                <div class="option-compact">
+                                    <label for="language">語言</label>
+                                    <div class="custom-select-mini">
+                                        <select id="language" aria-describedby="language-help">
+                                            <option value="zh-tw" selected>繁中</option>
+                                            <option value="zh-cn">簡中</option>
+                                            <option value="en">英語</option>
+                                            <option value="mixed">混合</option>
+                                        </select>
+                                        <div class="select-arrow-mini"></div>
+                                    </div>
+                                    <div id="language-help" class="sr-only">選擇語言偏好</div>
+                                </div>
+                            </fieldset>
+
+                            <button class="optimize-btn-compact" id="optimize-btn" type="button" aria-describedby="optimize-help">
+                                <i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i>
+                                <span>立即優化</span>
+                            </button>
+                            <div id="optimize-help" class="sr-only">點擊開始專業優化處理</div>
+                        </div>
+                    </div>
+
+                    <div class="output-panel" role="region" aria-labelledby="output-section-title">
+                        <h3 id="output-section-title" class="sr-only">優化結果區域</h3>
+                        
+                        <div class="output-header-compact">
+                            <span class="output-title">優化結果</span>
+                            <div class="output-actions">
+                                <button class="action-btn-mini" id="copy-btn" title="複製到剪貼板" aria-label="複製優化結果">
+                                    <i class="fas fa-copy" aria-hidden="true"></i>
+                                </button>
+                                <button class="action-btn-mini" id="save-btn" title="儲存為檔案" aria-label="儲存優化結果">
+                                    <i class="fas fa-download" aria-hidden="true"></i>
+                                </button>
+                                <button class="action-btn-mini" id="share-btn" title="分享結果" aria-label="分享優化結果">
+                                    <i class="fas fa-share" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="optimized-output-compact" id="optimized-output">
+                            <div class="placeholder">
+                                <i class="fas fa-lightbulb" aria-hidden="true"></i>
+                                <p>優化結果將在此顯示</p>
+                            </div>
+                        </div>
+
+                        <div class="improvement-tips hidden" id="improvement-tips" aria-live="polite">
+                            <h4><i class="fas fa-lightbulb" aria-hidden="true"></i> 改進建議</h4>
+                            <ul id="tips-list"></ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bottom-controls" aria-labelledby="controls-title">
+                <h2 id="controls-title" class="sr-only">控制面板</h2>
+                
+                <div class="control-panels">
+                    <nav class="nav-compact" role="navigation" aria-label="領域選擇">
+                        <button class="nav-btn-compact active" data-category="code" type="button" aria-pressed="true" title="代碼開發專業領域">
+                            <i class="fas fa-code" aria-hidden="true"></i>
+                            <span>代碼開發</span>
+                        </button>
+                        <button class="nav-btn-compact" data-category="art" type="button" aria-pressed="false" title="繪畫創作專業領域">
+                            <i class="fas fa-palette" aria-hidden="true"></i>
+                            <span>繪畫創作</span>
+                        </button>
+                        <button class="nav-btn-compact" data-category="ui" type="button" aria-pressed="false" title="UI設計專業領域">
+                            <i class="fas fa-desktop" aria-hidden="true"></i>
+                            <span>UI設計</span>
+                        </button>
+                    </nav>
+                    
+                    <div class="quick-features">
+                        <div class="templates-mini" id="templates-mini" role="region" aria-label="快速範本">
+                            <span class="feature-title">
+                                <i class="fas fa-bookmark" aria-hidden="true"></i>
+                                範本
+                            </span>
+                            <div class="template-pills" id="template-pills">
+                                <!-- 動態載入範本 -->
+                            </div>
+                        </div>
+                        
+                        <div class="history-mini" id="history-mini" role="region" aria-label="歷史記錄">
+                            <button class="history-toggle" id="history-toggle" aria-expanded="false" aria-controls="history-list">
+                                <i class="fas fa-history" aria-hidden="true"></i>
+                                <span>歷史</span>
+                                <i class="fas fa-chevron-up toggle-arrow" aria-hidden="true"></i>
+                            </button>
+                            <div class="history-dropdown hidden" id="history-list" aria-live="polite">
+                                <div class="empty-history">
+                                    <p>暫無歷史記錄</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer-compact" role="contentinfo">
+        <div class="container">
+            <p>&copy; 2025 PromptWizard - 高技術水準專業服務</p>
+        </div>
+    </footer>
+
+    <!-- API Key Modal -->
+    <div id="api-key-modal" class="modal hidden" role="dialog" aria-labelledby="api-key-title" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="api-key-title">API 金鑰設置</h2>
+                <button class="modal-close" aria-label="關閉對話框" onclick="hideApiKeyModal()">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>請輸入您的 Gemini API 金鑰以啟用 AI 優化功能：</p>
+                <div class="input-group">
+                    <label for="api-key-input" class="input-label">API 金鑰</label>
+                    <input 
+                        type="password" 
+                        id="api-key-input" 
+                        class="api-key-input"
+                        placeholder="AIzaSy..."
+                        aria-describedby="api-key-help"
+                    >
+                    <div id="api-key-help" class="input-help">
+                        您可以在 <a href="https://makersuite.google.com/app/apikey" target="_blank" rel="noopener">Google AI Studio</a> 取得 API 金鑰
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="hideApiKeyModal()">取消</button>
+                <button class="btn-primary" onclick="saveApiKeyFromModal()">儲存</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen reader only utility class styles -->
+    <style>
+        .sr-only {
+            position: absolute !important;
+            width: 1px !important;
+            height: 1px !important;
+            padding: 0 !important;
+            margin: -1px !important;
+            overflow: hidden !important;
+            clip: rect(0, 0, 0, 0) !important;
+            white-space: nowrap !important;
+            border: 0 !important;
+        }
+    </style>
+
+    <script src="gemini_init.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
